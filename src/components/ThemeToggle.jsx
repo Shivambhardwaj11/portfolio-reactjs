@@ -1,37 +1,34 @@
-import React, { useState, useEffect } from 'react';
-import { Sun , Moon } from 'lucide-react';
-import { cn } from '../lib/utils';
+import React, { useEffect, useState } from "react";
+import { Moon, Sun } from "lucide-react";
+import { cn } from "../lib/utils"; // ✅ make sure this file exists
 
 export const ThemeToggle = () => {
-    const[isDarkMode, setDarkMode] = useState(false);
-    useEffect (() => {
-        const savedTheme = localStorage.getItem('theme');
-        if (savedTheme) {
-            setDarkMode(savedTheme === 'dark');
-            
-        } else{
-            localStorage.setItem('theme', 'light');
-            setDarkMode(false);
-        }
-    }, []);
+  const [isDarkMode, setIsDarkMode] = useState(false);
 
-    const toggleTheme = () => {
-        if (isDarkMode) {
-            document.documentElement.classList.remove('dark');
-            localStorage.setItem('theme', 'light');
-            setDarkMode(false);
-            
-        }else {
-            document.documentElement.classList.add('dark');
-            localStorage.setItem('theme', 'dark');
-            setDarkMode(true);
-            
-        }
-    };
+  useEffect(() => {
+    const storedTheme = localStorage.getItem("theme");
+    setIsDarkMode(storedTheme === "dark");
+  }, []);
 
-    return <button onClick={toggleTheme} className={cn("fixed max-sm:hidden top-5 right-5 z-40 p-2 rounded-full transition-colors duration-300 focus:outline-hidden")}>
-        {" "}
-        {isDarkMode ? 
-        <Sun className='h-6 w-6 text-yellow-500 ' />
-        : <Moon className='h-6 w-6 text-blue-500' />}</button>
-}
+  const toggleTheme = () => {
+    const newTheme = isDarkMode ? "light" : "dark";
+    document.documentElement.classList.toggle("dark", newTheme === "dark");
+    localStorage.setItem("theme", newTheme);
+    setIsDarkMode(newTheme === "dark");
+  };
+
+  return (
+    <button
+      onClick={toggleTheme}
+      className={cn(
+        "fixed top-5 right-5 z-50 p-2 rounded-full bg-gray-200 dark:bg-gray-800 transition"
+      )}
+    >
+      {isDarkMode ? (
+        <Sun className="h-6 w-6 text-yellow-500" />
+      ) : (
+        <Moon className="h-6 w-6 text-blue-500" />
+      )}
+    </button>
+  );
+};
