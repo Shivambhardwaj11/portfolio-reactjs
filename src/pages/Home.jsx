@@ -1,6 +1,7 @@
 import { AboutMe } from "../components/AboutMe";
 import { ContactSection } from "../components/ContactSection";
 import { HeroSection } from "../components/HeroSection";
+import ImageBanner from "../components/ImageBanner";
 import Navbar from "../components/Navbar";
 import { ProjectsSection } from "../components/ProjectsSection";
 import { SkillSection } from "../components/SkillSection";
@@ -18,6 +19,7 @@ export const Home = () => {
         <Navbar />
 
         <main>
+            <ImageBanner />
             <HeroSection />
             <AboutMe />
             <SkillSection />

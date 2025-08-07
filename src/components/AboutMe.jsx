@@ -16,7 +16,7 @@ export const AboutMe = () => {
 
                     <div className="flex flex-col sm:flex-row gap-4 pt-4 justify-center">
                         <a href="#contact" className="cosmic-button"> Contact Me</a>
-                        <a href="#projects" className="px-6 py-2 rounded-full border border-primary text-primary hover:bg-primary/25 transition-colors duration-300"> Download Resume</a>
+                        <a href="/projects/Shivam-Bhardwaj-resume.pdf" target="blank" className="px-6 py-2 rounded-full border border-primary text-primary hover:bg-primary/25 transition-colors duration-300"> Download Resume</a>
                     </div>
                     
                 </div>
